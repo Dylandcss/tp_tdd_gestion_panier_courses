@@ -38,7 +38,7 @@ namespace Panier.Core
             if (_items.Count == 0)
                 throw new ShoppingCartEmptyException("Le panier est vide.");
 
-            if (percentage <= 0 || percentage > 100)
+            if (percentage < 0 || percentage > 100)
                 throw new ArgumentException("Le pourcentage doit être entre 0 et 100.");
 
             _discountPercentage = Math.Round(percentage, 2);

@@ -103,7 +103,7 @@ public class ShoppingCartTests
     }
     
     [TestMethod]
-    public void WhenGetTotal_WithDiscountApplied_ThenResultShouldBeCorrect()
+    public void WhenGetTotal_With10PercentDiscountApplied_ThenResultShouldBe45()
     {
         var shoppingCart = _setUp();
         shoppingCart.AddItem("test", 50m, 1);
@@ -112,4 +112,16 @@ public class ShoppingCartTests
         var result = shoppingCart.GetTotal();
         Assert.AreEqual(expected, result);
     }
+    
+    [TestMethod]
+    public void WhenGetTotal_With0PercentDiscountApplied_ThenResultShouldBe50()
+    {
+        var shoppingCart = _setUp();
+        shoppingCart.AddItem("test", 50m, 1);
+        shoppingCart.ApplyDiscount(0m);
+        var expected = 50;
+        var result = shoppingCart.GetTotal();
+        Assert.AreEqual(expected, result);
+    }
+    
 }
