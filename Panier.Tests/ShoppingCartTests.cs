@@ -42,4 +42,14 @@ public class ShoppingCartTests
         var shoppingCart = _setUp();
         Assert.Throws<ShoppingCartEmptyException>(() => shoppingCart.ApplyDiscount(0.8m));
     }
+    
+    [TestMethod]
+    public void WhenAddItem_WithOneArticle_ThenResultShouldBeOne()
+    {
+        var shoppingCart = _setUp();
+        var expected = 1;
+        shoppingCart.AddItem("test", 2.50m, 1);
+        var result = shoppingCart.GetItemCount();
+        Assert.AreEqual(expected, result);
+    }
 }
