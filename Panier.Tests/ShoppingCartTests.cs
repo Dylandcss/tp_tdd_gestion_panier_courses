@@ -80,4 +80,14 @@ public class ShoppingCartTests
         var shoppingCart = _setUp();
         Assert.Throws<InvalidOperationException>(() => shoppingCart.AddItem("test", 2m, quantity));
     }
+
+    [TestMethod]
+    public void WhenGetTotal_WithOneArticleAtFifty_ThenResultShouldBeFifty()
+    {
+        var shoppingCart = _setUp();
+        shoppingCart.AddItem("test", 50m, 1);
+        var expected = 50;
+        var result = shoppingCart.GetTotal();
+        Assert.AreEqual(expected, result);
+    }
 }
