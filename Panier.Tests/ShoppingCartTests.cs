@@ -52,4 +52,10 @@ public class ShoppingCartTests
         var result = shoppingCart.GetItemCount();
         Assert.AreEqual(expected, result);
     }
+    
+    public void WhenAddItem_WithInvalidName_ThenShouldThrowException()
+    {
+        var shoppingCart = _setUp();
+        Assert.Throws<InvalidOperationException>(() => shoppingCart.AddItem("", 2.50m, 1));
+    }
 }
