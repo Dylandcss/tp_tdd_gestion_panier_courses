@@ -14,6 +14,7 @@ namespace Panier.Core
         {
             if(string.IsNullOrWhiteSpace(name)) throw new InvalidOperationException("Nom invalide.");
             if(price <= 0) throw new InvalidOperationException("Le prix doit être supérieur à zéro.");
+            if (quantity <= 0) throw new InvalidOperationException("La quantité doit être supérieur à zéro.");
             _items.Add(new CartItem(name, price, quantity));
         }
             
