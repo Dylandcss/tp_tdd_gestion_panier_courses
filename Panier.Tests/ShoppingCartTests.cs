@@ -135,4 +135,11 @@ public class ShoppingCartTests
         Assert.AreEqual(expected, result);
     }
     
+    [TestMethod]
+    public void WhenGetTotal_WithNegativePercentDiscountApplied_ThenShouldThrowException()
+    {
+        var shoppingCart = _setUp();
+        shoppingCart.AddItem("test", 50m, 1);
+        Assert.Throws<ArgumentException>(() => shoppingCart.ApplyDiscount(-50m));
+    }
 }
