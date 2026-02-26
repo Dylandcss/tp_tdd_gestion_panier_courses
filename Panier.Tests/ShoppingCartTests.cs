@@ -71,4 +71,13 @@ public class ShoppingCartTests
         var shoppingCart = _setUp();
         Assert.Throws<InvalidOperationException>(() => shoppingCart.AddItem("test", (decimal)price, 1));
     }
+    
+    [TestMethod]
+    [DataRow(0)]
+    [DataRow(-1)]
+    public void WhenAddItem_WithQuantityUnderOrEqualToZero_ThenShouldThrowException(int quantity)
+    {
+        var shoppingCart = _setUp();
+        Assert.Throws<InvalidOperationException>(() => shoppingCart.AddItem("test", 2m, quantity));
+    }
 }
