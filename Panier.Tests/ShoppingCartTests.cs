@@ -150,4 +150,13 @@ public class ShoppingCartTests
         shoppingCart.AddItem("test", 50m, 1);
         Assert.Throws<ArgumentException>(() => shoppingCart.ApplyDiscount(125m));
     }
+    
+    [TestMethod]
+    public void WhenGetTotal_WithDiscountAppliedTwoTime_ThenShouldThrowException()
+    {
+        var shoppingCart = _setUp();
+        shoppingCart.AddItem("test", 50m, 1);
+        shoppingCart.ApplyDiscount(75m);
+        Assert.Throws<Exception>(() => shoppingCart.ApplyDiscount(75m));
+    }
 }

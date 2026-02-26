@@ -41,6 +41,8 @@ namespace Panier.Core
             if (percentage < 0 || percentage > 100)
                 throw new ArgumentException("Le pourcentage doit être entre 0 et 100.");
 
+            if (_discountPercentage > 0) throw new Exception("Une remise a déjà été appliquée");
+            
             _discountPercentage = Math.Round(percentage, 2);
         }
     }
