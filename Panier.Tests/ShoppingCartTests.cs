@@ -107,7 +107,7 @@ public class ShoppingCartTests
     {
         var shoppingCart = _setUp();
         shoppingCart.AddItem("test", 50m, 1);
-        shoppingCart.ApplyDiscount(0.9m);
+        shoppingCart.ApplyDiscount(10m);
         var expected = 45;
         var result = shoppingCart.GetTotal();
         Assert.AreEqual(expected, result);
