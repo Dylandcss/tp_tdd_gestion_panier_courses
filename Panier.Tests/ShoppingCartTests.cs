@@ -1,4 +1,5 @@
 using Panier.Core;
+using Panier.Core.Exceptions;
 
 namespace Panier.Tests;
 
@@ -33,5 +34,12 @@ public class ShoppingCartTests
         var result = shoppingCart.GetTotal();
         
         Assert.AreEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void WhenApplyDiscount_WithZeroArticles_ThenShouldThrowException()
+    {
+        var shoppingCart = _setUp();
+        Assert.Throws<ShoppingCartEmptyException>(() => shoppingCart.ApplyDiscount(0.8m));
     }
 }
