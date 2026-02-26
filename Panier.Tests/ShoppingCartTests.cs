@@ -90,4 +90,15 @@ public class ShoppingCartTests
         var result = shoppingCart.GetTotal();
         Assert.AreEqual(expected, result);
     }
+    
+    [TestMethod]
+    public void WhenGetTotal_WithTwoArticleAtFifty_ThenResultShouldBeOneHundred()
+    {
+        var shoppingCart = _setUp();
+        shoppingCart.AddItem("test", 50m, 1);
+        shoppingCart.AddItem("test", 50m, 1);
+        var expected = 100;
+        var result = shoppingCart.GetTotal();
+        Assert.AreEqual(expected, result);
+    }
 }
