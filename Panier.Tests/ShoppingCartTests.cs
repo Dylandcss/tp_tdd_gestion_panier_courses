@@ -142,4 +142,12 @@ public class ShoppingCartTests
         shoppingCart.AddItem("test", 50m, 1);
         Assert.Throws<ArgumentException>(() => shoppingCart.ApplyDiscount(-50m));
     }
+    
+    [TestMethod]
+    public void WhenGetTotal_WithDiscountAppliedAbove100Percent_ThenShouldThrowException()
+    {
+        var shoppingCart = _setUp();
+        shoppingCart.AddItem("test", 50m, 1);
+        Assert.Throws<ArgumentException>(() => shoppingCart.ApplyDiscount(125m));
+    }
 }
