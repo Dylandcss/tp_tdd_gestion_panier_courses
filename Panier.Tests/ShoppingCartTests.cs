@@ -22,4 +22,16 @@ public class ShoppingCartTests
         
         Assert.AreEqual(expected, result);
     }
+    
+    [TestMethod]
+    public void WhenGetTotal_WithZeroArticles_ThenResultShouldBeZero()
+    {
+        var shoppingCart = _setUp();
+        
+        var expected = 0;
+        
+        var result = shoppingCart.GetTotal();
+        
+        Assert.AreEqual(expected, result);
+    }
 }
