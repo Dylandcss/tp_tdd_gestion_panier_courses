@@ -124,4 +124,15 @@ public class ShoppingCartTests
         Assert.AreEqual(expected, result);
     }
     
+    [TestMethod]
+    public void WhenGetTotal_With100PercentDiscountApplied_ThenResultShouldBe0()
+    {
+        var shoppingCart = _setUp();
+        shoppingCart.AddItem("test", 50m, 1);
+        shoppingCart.ApplyDiscount(100m);
+        var expected = 0;
+        var result = shoppingCart.GetTotal();
+        Assert.AreEqual(expected, result);
+    }
+    
 }
