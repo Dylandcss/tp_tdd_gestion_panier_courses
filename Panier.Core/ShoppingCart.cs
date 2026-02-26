@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Panier.Core.Exceptions;
 
 namespace Panier.Core
 {
@@ -10,6 +11,10 @@ namespace Panier.Core
         public int GetItemCount() => _items.Where(i => i.Quantity > 0).Sum(i => i.Quantity);
         public void AddItem(string name, decimal price, int quantity) => throw new NotImplementedException();
         public decimal GetTotal() => _items.Sum(i => i.Quantity * i.Price);
-        public void ApplyDiscount(decimal percentage) => throw new NotImplementedException();
+
+        public void ApplyDiscount(decimal percentage)
+        {
+            if (_items.Count == 0) throw new ShoppingCartEmptyException("The shopping cart is empty");
+        }
     }
 }
