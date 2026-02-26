@@ -53,9 +53,13 @@ public class ShoppingCartTests
         Assert.AreEqual(expected, result);
     }
     
-    public void WhenAddItem_WithInvalidName_ThenShouldThrowException()
+    [TestMethod]
+    [DataRow(null)]
+    [DataRow("")]
+    [DataRow(" ")]
+    public void WhenAddItem_WithInvalidName_ThenShouldThrowException(string name)
     {
         var shoppingCart = _setUp();
-        Assert.Throws<InvalidOperationException>(() => shoppingCart.AddItem("", 2.50m, 1));
+        Assert.Throws<InvalidOperationException>(() => shoppingCart.AddItem(name, 2.50m, 1));
     }
 }
