@@ -13,7 +13,7 @@ namespace Panier.Core
         public void AddItem(string name, decimal price, int quantity)
         {
             if(string.IsNullOrWhiteSpace(name)) throw new InvalidOperationException("Nom invalide.");
-            
+            if(price <= 0) throw new InvalidOperationException("Le prix doit être supérieur à zéro.");
             _items.Add(new CartItem(name, price, quantity));
         }
             
@@ -22,7 +22,7 @@ namespace Panier.Core
 
         public void ApplyDiscount(decimal percentage)
         {
-            if (_items.Count == 0) throw new ShoppingCartEmptyException("The shopping cart is empty");
+            if (_items.Count == 0) throw new ShoppingCartEmptyException("Le panier est vide.");
         }
     }
 }

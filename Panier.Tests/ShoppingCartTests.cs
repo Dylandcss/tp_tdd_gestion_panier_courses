@@ -66,9 +66,9 @@ public class ShoppingCartTests
     [TestMethod]
     [DataRow(0)]
     [DataRow(-1)]
-    public void WhenAddItem_WithPriceUnderZero_ThenShouldThrowException(decimal price)
+    public void WhenAddItem_WithPriceUnderOrEqualToZero_ThenShouldThrowException(double price)
     {
         var shoppingCart = _setUp();
-        Assert.Throws<InvalidOperationException>(() => shoppingCart.AddItem("test", price, 1));
+        Assert.Throws<InvalidOperationException>(() => shoppingCart.AddItem("test", (decimal)price, 1));
     }
 }
